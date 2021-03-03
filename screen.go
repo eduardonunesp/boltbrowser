@@ -18,7 +18,7 @@ const (
 	ExitScreenIndex
 )
 
-func defaultScreensForData(db *BoltDB) []Screen {
+func defaultScreensForData(db *bboltDB) []Screen {
 	browserScreen := BrowserScreen{db: db, rightViewPort: ViewPort{}, leftViewPort: ViewPort{}}
 	aboutScreen := AboutScreen(0)
 	screens := [...]Screen{

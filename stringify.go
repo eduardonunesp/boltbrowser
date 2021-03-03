@@ -7,7 +7,7 @@ import (
 )
 
 // stringify ensures that we can print only valid characters.
-// It's wrong to assume that everything is a string, since BoltDB is typeless.
+// It's wrong to assume that everything is a string, since bboltDB is typeless.
 func stringify(v []byte) string {
 	if utf8.Valid(v) {
 		ok := true

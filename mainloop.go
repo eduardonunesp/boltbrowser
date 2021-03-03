@@ -9,8 +9,8 @@ import (
 	"github.com/nsf/termbox-go"
 )
 
-func mainLoop(memBolt *BoltDB, style Style) {
-	screens := defaultScreensForData(memBolt)
+func mainLoop(membbolt *bboltDB, style Style) {
+	screens := defaultScreensForData(membbolt)
 	displayScreen := screens[BrowserScreenIndex]
 	layoutAndDrawScreen(displayScreen, style)
 	for {

@@ -62,7 +62,7 @@ func (screen *AboutScreen) drawScreen(style Style) {
 	xPos := startX
 	yPos := startY
 	if height <= 20 {
-		title := "BoltBrowser"
+		title := "bboltBrowser"
 		startY = 0
 		yPos = 0
 		termboxUtil.DrawStringAtPoint(title, (width-len(title))/2, startY, style.titleFg, style.titleBg)

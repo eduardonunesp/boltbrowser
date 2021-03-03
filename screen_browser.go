@@ -25,7 +25,7 @@ type ViewPort struct {
 BrowserScreen holds all that's going on :D
 */
 type BrowserScreen struct {
-	db             *BoltDB
+	db             *bboltDB
 	leftViewPort   ViewPort
 	rightViewPort  ViewPort
 	queuedCommand  string
@@ -67,9 +67,9 @@ const (
 )
 
 /*
-BoltType is just for tracking what type of db item we're looking at
+bboltType is just for tracking what type of db item we're looking at
 */
-type BoltType int
+type bboltType int
 
 const (
 	typeBucket = iota
@@ -543,7 +543,7 @@ func (screen *BrowserScreen) drawHeader(style Style) {
 		headerFileName = filepath.Base(headerFileName)
 	}
 	headerString := ProgramName + ": " + headerFileName
-	count := ((width-len(headerString))/2)+1
+	count := ((width - len(headerString)) / 2) + 1
 	if count < 0 {
 		count = 0
 	}
@@ -689,7 +689,7 @@ func formatValueJSON(val []byte) ([]byte, error) {
 	return out, nil
 }
 
-func (screen *BrowserScreen) bucketToLines(bkt *BoltBucket, style Style) []Line {
+func (screen *BrowserScreen) bucketToLines(bkt *bboltBucket, style Style) []Line {
 	var ret []Line
 	bfg, bbg := style.defaultFg, style.defaultBg
 	if comparePaths(screen.currentPath, bkt.GetPath()) {
@@ -803,7 +803,7 @@ func (screen *BrowserScreen) startRenameItem() bool {
 	return false
 }
 
-func (screen *BrowserScreen) startInsertItemAtParent(tp BoltType) bool {
+func (screen *BrowserScreen) startInsertItemAtParent(tp bboltType) bool {
 	w, h := termbox.Size()
 	inpW, inpH := w-1, 7
 	if w > 80 {
@@ -854,7 +854,7 @@ func (screen *BrowserScreen) startInsertItemAtParent(tp BoltType) bool {
 	return false
 }
 
-func (screen *BrowserScreen) startInsertItem(tp BoltType) bool {
+func (screen *BrowserScreen) startInsertItem(tp bboltType) bool {
 	w, h := termbox.Size()
 	inpW, inpH := w-1, 7
 	if w > 80 {
